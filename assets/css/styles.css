@@ -428,3 +428,5 @@ textarea{min-height:130px;resize:vertical}
 /* Consistent typography */
 button,input,select,textarea{font-family:'Inter',sans-serif}
 .cta-btn,.tab-btn{font-family:'Montserrat',sans-serif}
+
+.dropdown a.active{background:rgba(201,168,76,.14);color:var(--gold);font-weight:600}

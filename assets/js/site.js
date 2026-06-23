@@ -151,4 +151,33 @@
 
   // Footer year
   const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear();
+
+  // Dynamic active nav highlight based on current page
+  (function(){
+    const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const navLinks = document.querySelectorAll('.nav-links > li');
+    let topMatched = false;
+    navLinks.forEach(li => {
+      li.classList.remove('active');
+      const directA = li.querySelector(':scope > a');
+      if(directA){
+        const href = (directA.getAttribute('href')||'').toLowerCase();
+        if(href && href !== '#' && href === path){
+          li.classList.add('active');
+          topMatched = true;
+        }
+      }
+    });
+    // Dropdown items
+    document.querySelectorAll('.dropdown a').forEach(a => {
+      a.classList.remove('active');
+      const href = (a.getAttribute('href')||'').toLowerCase();
+      if(href === path){
+        a.classList.add('active');
+        const parentLi = a.closest('li.has-dropdown');
+        if(parentLi){ parentLi.classList.add('active'); topMatched = true; }
+      }
+    });
+  })();
+
 })();
