@@ -224,8 +224,8 @@ textarea{min-height:130px;resize:vertical}
 .contact-item .value{font-weight:600;color:var(--text)}
 
 /* Map embed */
-.map-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);min-height:480px}
-.map-wrap iframe{position:relative;z-index:1;display:block;width:100%;height:480px;border:0;filter:invert(.92) hue-rotate(180deg)}
+.map-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);height:480px}
+.map-wrap iframe{position:absolute;inset:0;z-index:1;display:block;width:100%;height:100%;border:0;filter:invert(.92) hue-rotate(180deg)}
 
 /* Map loading state */
 .map-loader{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(10,10,10,.96),rgba(20,20,20,.98));opacity:0;pointer-events:none;transition:opacity .35s ease}
@@ -240,7 +240,7 @@ textarea{min-height:130px;resize:vertical}
 
 
 /* Click-to-load facade (map + video) */
-.media-facade{display:flex;align-items:center;justify-content:center;width:100%;height:480px;border:0;cursor:pointer;color:#fff;text-align:center;background:linear-gradient(135deg,var(--bg-2,#0f1729) 0%,var(--bg,#0a0f1f) 100%);transition:filter .25s ease}
+.media-facade{display:flex;align-items:center;justify-content:center;position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;color:#fff;text-align:center;background:linear-gradient(135deg,var(--bg-2,#0f1729) 0%,var(--bg,#0a0f1f) 100%);transition:filter .25s ease}
 .media-facade:hover{filter:brightness(1.12)}
 .media-facade-inner{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.5rem}
 .media-facade svg{width:48px;height:48px;color:var(--accent,#3b82f6)}
@@ -387,8 +387,7 @@ textarea{min-height:130px;resize:vertical}
   .contact-item .value{font-size:.92rem;word-break:break-word}
   .contact-item .value a{word-break:break-all}
   .form-card{padding:28px 20px}
-  .map-wrap iframe{height:340px}
-  .media-facade{height:340px}
+  .map-wrap{height:340px}
 }
 @media (max-width:480px){
   .contact-item{flex-direction:row;align-items:flex-start}
