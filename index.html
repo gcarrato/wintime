@@ -6,6 +6,10 @@
 <title>Credenciamento Odontológico - Credenciamento de Dentistas</title>
 <meta name="description" content="Credenciamento Odontológico ou Clínica Odontológica entre os convênio odontológico não e credenciado. Torne-se agora mesmo sua Clínica  Credenciada.">
 <link rel="stylesheet" href="assets/css/styles.css">
+<link rel="preconnect" href="https://www.google.com" crossorigin>
+<link rel="preconnect" href="https://maps.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://maps.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://www.google.com">
 
 </head>
 <body>
@@ -53,7 +57,7 @@
     <div class="sec-head reveal"><span class="eyebrow">Estamos presentes em todo território nacional</span>
       <h2>Clientes Wintime Negócios</h2>
       <p>Mais de 54 mil visualizações e centenas de clientes atendidos em todo o Brasil.</p></div>
-    <div class="map-wrap reveal" data-map-src="https://www.google.com/maps/d/embed?mid=1tGYAnujMCDKJ4UnhfdpNHFDoqi77o4PK&hl=pt-BR&ehbc=2E312F">
+    <div class="map-wrap reveal" data-map-auto="1" data-map-src="https://www.google.com/maps/d/embed?mid=1tGYAnujMCDKJ4UnhfdpNHFDoqi77o4PK&hl=pt-BR&ehbc=2E312F">
       <button type="button" class="media-facade map-facade" aria-label="Carregar mapa interativo de clientes">
         <span class="media-facade-inner">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -61,6 +65,15 @@
           <span class="media-facade-sub">Toque para carregar o mapa interativo</span>
         </span>
       </button>
+      <div class="map-loader" aria-live="polite">
+        <div class="map-loader-inner">
+          <span class="map-loader-pulse">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <span class="map-loader-title">Carregando mapa de clientes</span>
+          <span class="map-loader-sub">Mais de 54 mil visualizações em todo o Brasil</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

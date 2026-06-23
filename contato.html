@@ -39,20 +39,33 @@
         </div>
       </div>
       <div class="reveal">
-        <form class="form-card" onsubmit="alert('Mensagem enviada! Entraremos em contato em breve.');return false;">
+        <form class="form-card" action="https://formsubmit.co/almeidarubens2026@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Novo contato pelo site Wintime Negócios">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://www.wintimenegocios.com.br/contato.html?enviado=1">
+          <input type="text" name="_honey" style="display:none">
           <h3 style="margin-bottom:24px">Envie sua mensagem</h3>
           <div class="form-row cols-2">
-            <div><label>Nome completo</label><input type="text" required></div>
-            <div><label>Telefone</label><input type="tel" required></div>
+            <div><label>Nome completo</label><input type="text" name="Nome" required></div>
+            <div><label>Telefone</label><input type="tel" name="Telefone" required></div>
           </div>
-          <div class="form-row"><div><label>E-mail</label><input type="email" required></div></div>
+          <div class="form-row"><div><label>E-mail</label><input type="email" name="Email" required></div></div>
           <div class="form-row cols-2">
-            <div><label>Contatar via</label><select><option>WhatsApp</option><option>Telefone</option><option>E-mail</option></select></div>
-            <div><label>Como nos conheceu?</label><select><option>Google</option><option>Internet</option><option>Redes Sociais</option><option>Indicação</option></select></div>
+            <div><label>Contatar via</label><select name="Contatar via"><option>WhatsApp</option><option>Telefone</option><option>E-mail</option></select></div>
+            <div><label>Como nos conheceu?</label><select name="Como nos conheceu"><option>Google</option><option>Internet</option><option>Redes Sociais</option><option>Indicação</option></select></div>
           </div>
-          <div class="form-row"><div><label>Mensagem</label><textarea required></textarea></div></div>
+          <div class="form-row"><div><label>Mensagem</label><textarea name="Mensagem" required></textarea></div></div>
           <button type="submit" class="cta-btn">Enviar mensagem <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+          <p id="form-msg" style="margin-top:16px;color:var(--gold);font-weight:600;display:none">Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
         </form>
+        <script>
+          (function(){
+            if(new URLSearchParams(location.search).get('enviado')==='1'){
+              var m=document.getElementById('form-msg'); if(m){ m.style.display='block'; m.scrollIntoView({behavior:'smooth',block:'center'}); }
+            }
+          })();
+        </script>
       </div>
     </div>
   </div>

@@ -224,8 +224,20 @@ textarea{min-height:130px;resize:vertical}
 .contact-item .value{font-weight:600;color:var(--text)}
 
 /* Map embed */
-.map-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
-.map-wrap iframe{display:block;width:100%;height:480px;border:0;filter:invert(.92) hue-rotate(180deg)}
+.map-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);min-height:480px}
+.map-wrap iframe{position:relative;z-index:1;display:block;width:100%;height:480px;border:0;filter:invert(.92) hue-rotate(180deg)}
+
+/* Map loading state */
+.map-loader{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(10,10,10,.96),rgba(20,20,20,.98));opacity:0;pointer-events:none;transition:opacity .35s ease}
+.map-wrap.is-loading .map-loader{opacity:1;pointer-events:auto}
+.map-loader-inner{display:flex;flex-direction:column;align-items:center;gap:14px;padding:34px 48px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow)}
+.map-loader-pulse{position:relative;width:60px;height:60px;border-radius:50%;background:conic-gradient(var(--gold),var(--gold-2),transparent 70%);animation:mapLoaderSpin 1.1s linear infinite;display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.map-loader-pulse::before{content:"";position:absolute;inset:6px;background:var(--bg-2);border-radius:50%}
+.map-loader-pulse svg{position:relative;z-index:2;width:22px;height:22px}
+.map-loader-title{font-family:'Montserrat',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text)}
+.map-loader-sub{font-size:.85rem;color:var(--text-muted)}
+@keyframes mapLoaderSpin{to{transform:rotate(360deg)}}
+
 
 /* Click-to-load facade (map + video) */
 .media-facade{display:flex;align-items:center;justify-content:center;width:100%;height:480px;border:0;cursor:pointer;color:#fff;text-align:center;background:linear-gradient(135deg,var(--bg-2,#0f1729) 0%,var(--bg,#0a0f1f) 100%);transition:filter .25s ease}

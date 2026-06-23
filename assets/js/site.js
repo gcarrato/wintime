@@ -136,17 +136,37 @@
     });
   });
 
-  // Click-to-load map — keeps the homepage fast
+  // Map loader — auto-loads when scrolled near (fast) or on click as fallback
   document.querySelectorAll('[data-map-src]').forEach(wrap=>{
     const btn = wrap.querySelector('.media-facade');
-    if(!btn) return;
-    btn.addEventListener('click', ()=>{
+    const loader = wrap.querySelector('.map-loader');
+    const showLoader = () => wrap.classList.add('is-loading');
+    const hideLoader = () => wrap.classList.remove('is-loading');
+
+    const loadMap = () => {
+      if(wrap.dataset.loaded) return;
+      showLoader();
+      wrap.dataset.loaded = '1';
       const iframe = document.createElement('iframe');
       iframe.src = wrap.dataset.mapSrc;
       iframe.title = 'Mapa Clientes Wintime Negócios';
-      iframe.loading = 'lazy';
-      btn.replaceWith(iframe);
-    });
+      iframe.loading = 'eager';
+      iframe.setAttribute('referrerpolicy','no-referrer-when-downgrade');
+      iframe.addEventListener('load', hideLoader, {once:true});
+      setTimeout(hideLoader, 3500); // fallback in case load event is delayed
+      if(btn){ btn.replaceWith(iframe); } else { wrap.appendChild(iframe); }
+    };
+    if(btn) btn.addEventListener('click', loadMap);
+    if(wrap.dataset.mapAuto){
+      if('IntersectionObserver' in window){
+        const mio = new IntersectionObserver((ents)=>{
+          ents.forEach(e=>{ if(e.isIntersecting){ loadMap(); mio.disconnect(); }});
+        },{rootMargin:'600px 0px'});
+        mio.observe(wrap);
+      } else { loadMap(); }
+      // safety: load after idle in case observer never fires
+      setTimeout(loadMap, 2500);
+    }
   });
 
   // Footer year
